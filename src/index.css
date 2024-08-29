@@ -33,8 +33,7 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: calc(128px * 3);
+  width: calc(128px * 3);
   height: calc(128px * 3);
 }
 .status {
