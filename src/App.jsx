@@ -61,28 +61,38 @@ export default function Board() {
     const opponentIndex = randomNumber() 
     
 
-    if(xIsNext) {
-      nextSquares[i] = player;
-    } else {
-      nextSquares[i] = opponent;
+    // if(xIsNext) {
+    //   nextSquares[i] = player;
+    // } else {
+    //   nextSquares[i] = opponent;
+    // }
+
+    nextSquares[i] = player;
+
+    function findNull() {
+      let foundNull = false;
+      let numOfNull = 0;
+
+      nextSquares.map((squares) => {
+        if(squares === null) {
+          numOfNull++;
+        }
+      });
+      console.log(numOfNull);
+
+      if(numOfNull >= 2) {
+        while (!foundNull) {
+          const randomIndex = Math.floor(Math.random() * 10); // Generate a random index
+      
+          if (nextSquares[randomIndex] === null) {
+            foundNull = true;
+            nextSquares[randomIndex] = opponent; 
+          }
+        }
+      }
     }
 
-    // nextSquares[i] = player;
-
-    // function findNull() {
-    //   let foundNull = false;
-    
-    //   while (!foundNull) {
-    //     const randomIndex = Math.floor(Math.random() * 10); // Generate a random index
-    //     console.log(randomIndex);
-    
-    //     if (nextSquares[randomIndex] === null) {
-    //       foundNull = true;
-    //       nextSquares[randomIndex] = opponent; 
-    //     }
-    //   }
-    // }
-    // findNull()
+    findNull()
 
     // Set squares array as nextSquares 
     setSquares(nextSquares);
