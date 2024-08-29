@@ -19,6 +19,16 @@ function Option({icon, onChooseClick}) {
 
 }
 
+function Restart({restartGame}) {
+
+  return (
+    <button className='restart' onClick={restartGame}>
+      Restart
+    </button>
+  )
+
+}
+
 export default function Board() {
   const iconOptions = ['♥','☆', '☘', '☥'];
   const [player, setPlayer] = useState('Choose Your Icon');
@@ -80,10 +90,19 @@ export default function Board() {
 
   }
 
+  function handleRestart() {
+    setSquares(squares.map((square) => null));
+    setPlayer('Choose Your Icon');
+    setOpponent('');
+    setXIsNext(true);
+  }
+
   const winner = calculateWinner(squares);
   let status = '';
   if(winner) {
     status = 'Winner: ' + winner;
+  }else if(squares.every(square => square !== null)) {
+    status = 'Draw';
   } else {
     status = 'Next Player: ' + (xIsNext ? player : opponent);
   }
@@ -112,6 +131,7 @@ export default function Board() {
           <Square value={squares[7]} onSquareClick={() => handleClick(7)}/>
           <Square value={squares[8]} onSquareClick={() => handleClick(8)}/>
         </div>
+        <Restart restartGame={() => handleRestart()}/>
       </div>
       
     </>
