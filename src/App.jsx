@@ -114,7 +114,7 @@ export default function Board() {
   }else if(squares.every(square => square !== null)) {
     status = 'Draw';
   } else {
-    status = 'Next Player: ' + (xIsNext ? player : opponent);
+    status = 'Player: ' + player;
   }
 
   return (
