@@ -59,3 +59,11 @@ body {
 .player, .opponent {
   font-size: 1.25rem;
 }
+.restart {
+  padding: 1.5rem 3rem;
+  background-color: white;
+  color: rgb(250, 64, 163);
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
